@@ -166,7 +166,7 @@ function login(req, res){
 		"iss":"rxFirmaInterno",
 		"token": datetime,
 		"exp": datetime.toString().substring(0,10),
-		"url":"http://localhost:3000/loginResponse",			
+		"url":"http://localhost:3000/loginResponse",		
 		"accessToken" : encrypted.toUpperCase()
 	}
 	//secreto compartido
@@ -344,7 +344,7 @@ function getFirmaDigitalServerJAR(req, res){
 
 //retornar el getFirmaDigitalServerJAR
 function getlibASEP11dylib(req, res){
-	console.log('getFirmaDigitalServerJAR');
+	console.log('libASEP11');
 	let filePath =  path.resolve(__dirname,'../public/FirmaDigital/plugin/lib/libASEP11.dylib');
 
 	// Check if file specified by the filePath exists 

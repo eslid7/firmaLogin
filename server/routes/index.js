@@ -26,6 +26,6 @@ router.route('/home/public/FirmaDigital/plugin/lib/FirmaDigitalServer.lib').get(
 
 router.route('/home/public/FirmaDigital/plugin/lib/FirmaDigitalServer.jar').get(dataController.getFirmaDigitalServerJAR);
 
-router.route('/home/public/FirmaDigital/plugin/lib/getlibASEP11.dylib').get(dataController.getlibASEP11dylib);
+router.route('/home/public/FirmaDigital/plugin/lib/libASEP11.dylib').get(dataController.getlibASEP11dylib);
 
 module.exports = router
