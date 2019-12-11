@@ -1,0 +1,123 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-image:url(../images/bg.png);
+	background-repeat:no-repeat;
+	color: #5c5c5c;
+	font-family: Arial,Verdana,Helvetica,sans-serif;
+}
+.contenedor{
+	width: 400px;
+	height:500px;
+	margin: 0 auto;
+	background-color:#FFFFFF;
+	border-radius:10px;
+	box-shadow:#000000;
+	margin-top:5%;
+	background-image:url(../images/bg_content.png);
+	background-repeat:no-repeat;
+	background-position:bottom;
+}
+
+h1{
+	font-size:22px;
+	text-align:center;
+	padding-top:20px;
+	margin-bottom:0px;
+}
+
+h2{
+	font-size:11px;
+	text-align:center;
+	font-weight:normal;
+	padding-top:0px;
+	margin-top:2px;
+}
+
+p{
+	font-size:10px;
+	font-weight:normal;
+	margin:0px;
+}
+
+hr { 
+	border: 0; 
+	height: 1px; 
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0));
+	margin-top:20px; 
+}
+table.datosBD{
+	width:70%;
+	margin:0 auto;
+	margin-bottom:15px;
+}
+
+select{
+	border-radius:3px;
+	height:30px;
+	border: solid 1px #012756;
+	width:70%;
+	color:#696969;
+	margin-top:10px;
+	margin-left:60px;
+	padding-left:5px;
+}
+
+input[type="text"], input[type="password"]{
+	border-radius:3px;
+	height:26px;
+	border: solid 1px #012756;
+	width:67%;
+	color:#696969;
+	margin-top:10px;
+	margin-left:60px;
+	padding-left:10px;
+}
+
+.botones{
+	width:100%;
+	text-align:center;
+	margin-top:20px;
+}
+
+input[type="button"],input[type="submit"]{
+	border:none;
+	width:33.5%;
+	height:30px;
+	border-radius:3px;
+	cursor:pointer;
+}
+
+.btnPrimario{
+	margin-right:10px;
+	background-color: #0a55b3;
+	color:#fff;
+}
+
+.btnPrimario:hover{
+	margin-right:10px;
+	background-color: #094898;
+	color:#fff;
+}
+
+.btnSecundario{
+	background-color: #a3a3a2;
+	color:#fff;
+}
+
+.btnSecundario:hover{
+	background-color: #8e8e8d;
+	color:#fff;
+}
+
+.powerbySoin{
+	width:98%;
+	height:40px;
+	background-image:url(../images/powerbySoin.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	background-size:30%;
+	margin-top:50px;
+}
+

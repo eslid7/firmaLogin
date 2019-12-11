@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOCUMENTO>
+                    <LLAVE>5396</LLAVE>
+                    <ORIGEN>1</ORIGEN>
+                    <GUID>3954D57A-FA75-BE34-2536CC2A05D9B2BC</GUID>
+                    <NUMCONSECUTIVO>5396</NUMCONSECUTIVO>
+                    <NUMVERSION>1</NUMVERSION>
+                    <N_NOTARIO>0205800116</N_NOTARIO>
+                    
+                    <F_OTORGAMIENTO>23-08-2016</F_OTORGAMIENTO>
+                    <H_OTORGAMIENTO>01:44:00</H_OTORGAMIENTO>
+                    <C_TIPOMOVIMIENTO>TR01</C_TIPOMOVIMIENTO>
+                    <C_TIPOBIEN>000001</C_TIPOBIEN>
+                    <C_CLASEBIEN>   </C_CLASEBIEN>
+                    <C_CODIGOBIEN>  </C_CODIGOBIEN>
+                    <N_BIEN>BBF123</N_BIEN>
+                    <ESTIMACION>4.00</ESTIMACION>
+                    <C_MONEDA>000001</C_MONEDA>
+                    <PROPIETARIOACTUAL>
+                        <C_TIPOIDENTACT>000003</C_TIPOIDENTACT>
+                        <N_IDENTIFICACACT>3101090323</N_IDENTIFICACACT>
+                        <D_APELLIDO1ACT>     TALOMEX SOCIEDA</D_APELLIDO1ACT>
+                        <D_APELLIDO2ACT>D ANONIMA</D_APELLIDO2ACT>
+                        <D_NOMBREACT/>
+                        <D_NOMBREJURIDICOACT/>
+                    </PROPIETARIOACTUAL>
+                    <PROPIETARIONUEVO>
+                        <C_TIPOIDENT>000007</C_TIPOIDENT>
+                        <N_IDENTIFICAC>1</N_IDENTIFICAC>
+                        <N_PROPORCION1>1</N_PROPORCION1>
+                        <N_PROPORCION2>1</N_PROPORCION2>
+                        <D_APELLIDO1>S</D_APELLIDO1>
+                        <D_APELLIDO2>S</D_APELLIDO2>
+                        <D_NOMBRE>A</D_NOMBRE>
+                        <D_NOMBREJURIDICO/>
+                        <C_CAUSAADQ>000005</C_CAUSAADQ>
+                        <C_ECIVIL>000001</C_ECIVIL>
+                        <C_NACIONALIDAD>000011</C_NACIONALIDAD>
+                        <F_ADQUISICION>23-08-2016</F_ADQUISICION>
+                        <C_TIPODER>000003</C_TIPODER>
+                    </PROPIETARIONUEVO>
+                    <GRAVAMENES>
+	                	<GRAVAMEN>
+	                        <ACEPTACIONGENERALGRAVAMEN>false</ACEPTACIONGENERALGRAVAMEN>
+	                    </GRAVAMEN>
+	                    
+                    </GRAVAMENES>
+                    <DETALLE>
+                    	<DATOSTRAMITE>
+							<NUMEROTRAMITE>5396</NUMEROTRAMITE>
+							<NUMEROESCRITURA>1</NUMEROESCRITURA>
+							<TOMOPROTOCOLO>1</TOMOPROTOCOLO>
+							<FOLIOPROTOCOLO>1</FOLIOPROTOCOLO>
+							<LUGAROTORGAMIENTO>1</LUGAROTORGAMIENTO>
+							<FECHAOTORGAMIENTO>23-08-2016</FECHAOTORGAMIENTO>
+							<HORAOTORGAMIENTO>01:44:00</HORAOTORGAMIENTO>
+							<NOTARIO>02-0580-0116</NOTARIO>
+						</DATOSTRAMITE>
+                        <DATOSVEHICULO>
+                        	<PLACA>BBF123</PLACA>
+                            <MARCA>HYUNDAI</MARCA>
+                            <CARROCERIA>MICROBUS</CARROCERIA>
+							<CATEGORIA>MICROBUS</CATEGORIA>
+                            <COLOR>BEIGE</COLOR>
+							<VALORTRIBUTARIO>12190000</VALORTRIBUTARIO>
+                            <CAPACIDAD>12</CAPACIDAD>
+                        </DATOSVEHICULO>
+                        <DATOSPROPIETARIO>
+                        	<IDENTIFICACION>000003</IDENTIFICACION>
+							<NOMBRE>     TALOMEX SOCIEDAD ANONIMA</NOMBRE>
+                        	<ESTADOCIVIL>DESCONOCIDO</ESTADOCIVIL>
+                            <TIPOIDENTIFICACION>CEDULA JURIDICA</TIPOIDENTIFICACION>
+                        </DATOSPROPIETARIO>
+                        <DATOSADQUIRIENTE>
+							<IDENTIFICACION>1</IDENTIFICACION>
+							<TIPOIDENTIFICACION>CARNE DE MISION INTERNACIONAL</TIPOIDENTIFICACION>
+							<NOMBRE>a S S</NOMBRE>
+							<NACIONALIDAD>ALEMAN</NACIONALIDAD>
+							<ESTADOCIVIL>SOLTERO</ESTADOCIVIL>
+							<DOMICILIO>S</DOMICILIO>
+						</DATOSADQUIRIENTE>
+						<DATOSADQUISICION>    
+							<VALORCONTRATO>4.00</VALORCONTRATO>
+							<MONEDA>COLONES</MONEDA>
+							<CAUSAADQUISITIVA>GRATUITA LEY 9024</CAUSAADQUISITIVA>
+							<TIPOMOVIMIENTO>GRATUITA LEY 9024</TIPOMOVIMIENTO>
+						</DATOSADQUISICION>
+                    </DETALLE>
+                <ENTEROS>
+				<ENTERO> 
+                    <C_ENTIDAD>000002</C_ENTIDAD> 
+                    <N_ENTERO>13646</N_ENTERO>
+                    <C_AGENCIA>000001</C_AGENCIA> 
+                    <F_CANCELADO>23-08-2016</F_CANCELADO> 
+                    <H_CANCELADO>13:46:12</H_CANCELADO> 
+                    <M_ENTERO>404577.3</M_ENTERO> 
+                    <M_TASADO>12190000.00</M_TASADO> 
+                    <M_BRUTO>408615</M_BRUTO> 
+                    <C_MONEDA_ENTERO>000001</C_MONEDA_ENTERO> 
+                    <C_REGISTRO>000002</C_REGISTRO> 
+                    <C_ACTO>000002</C_ACTO>
+                    <ADICIONAL>0</ADICIONAL>
+                    <REINGRESO>false</REINGRESO>
+                    
+                    	<TIMBRES>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000002</C_TIMBRE>
+                                
+                                <M_PAGADO>470.0</M_PAGADO>
+                                <M_BRUTO>500</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000006</C_TIMBRE>
+                                
+                                <M_PAGADO>18.8</M_PAGADO>
+                                <M_BRUTO>20</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000026</C_TIMBRE>
+                                
+                                <M_PAGADO>188.0</M_PAGADO>
+                                <M_BRUTO>200</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000008</C_TIMBRE>
+                                
+                                <M_PAGADO>4700.0</M_PAGADO>
+                                <M_BRUTO>5000</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000005</C_TIMBRE>
+                                
+                                <M_PAGADO>587.5</M_PAGADO>
+                                <M_BRUTO>625</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000004</C_TIMBRE>
+                                
+                                <M_PAGADO>36570.0</M_PAGADO>
+                                <M_BRUTO>36570.0</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000001</C_TIMBRE>
+                                
+                                <M_PAGADO>57293.0</M_PAGADO>
+                                <M_BRUTO>60950</M_BRUTO>
+                                </TIMBRE>
+                            
+                                <TIMBRE>
+                                <C_TIMBRE>000121</C_TIMBRE>
+                                
+                                <M_PAGADO>304750.0</M_PAGADO>
+                                <M_BRUTO>304750.0</M_BRUTO>
+                                </TIMBRE>
+                            		
+                    	</TIMBRES>
+                    
+                </ENTERO></ENTEROS><HAYADICIONAL>0</HAYADICIONAL><OCURSO>0</OCURSO></DOCUMENTO>

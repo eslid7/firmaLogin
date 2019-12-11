@@ -1,0 +1,31 @@
+{
+  "name": "firmalogin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aes-js": "^3.1.2",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "decompress": "^4.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "jwt-simple": "^0.5.6",
+    "keygenerator": "^1.0.4",
+    "node-gzip": "^1.1.2",
+    "node-rsa": "^1.0.6",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "save": "^2.4.0",
+    "sha1": "^1.1.1",
+    "struct": "0.0.12",
+    "zlib": "^1.0.5"
+  }
+}

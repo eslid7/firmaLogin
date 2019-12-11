@@ -1,0 +1,131 @@
+<!--- 
+	Originalmente se bajaba el Firmador por JNLP:
+		El FirmaDigital.jnlp se genera 2 veces:
+			1. En un iframe de login.cfm, para realizar el download del jnlp (se indica enviando parámetro TKN1=<token>)
+			2. Por el javaws, durante la ejecución del jnlp, porque existe un href para que vuelve a bajar el jnlp y no de errores de seguridad (se indica enviando parámetro TKN2=<token> y TKN3=<tkn3>)
+	Posteriormente se bajaba el Instalador por JNLP:
+		Se genera el ajax 
+		Fuerza la logica del punto 2
+	Actualmente se baja el Instalador como .jar
+
+<cfif NOT isdefined("url.TKN1")>
+	<cfthrow message="ERROR: El token es inválido">
+</cfif>
+<cfset LvarTOKEN=url.TKN1>
+<cfset StructDelete(url,"TKN1")>
+<cfif NOT isdefined("Application._FirmaDigital_.tokens.TK#LvarToken#.MSG")>
+	<cfthrow message="ERROR: El token es inválido">
+</cfif>
+
+--->
+
+<% 
+	let TKN2 = LvarToken;
+	let TKN3 = new Date().getTime();
+	let LvarMSG = "A1A2A3";
+	
+	global._FirmaDigital_.tokens["TK"+TKN2].TKN3 = TKN3;
+ 	global._FirmaDigital_.tokens["TK"+TKN2].TKN_CNT = 1;
+	console.log(global._FirmaDigital_.tokens["TK"+LvarToken].MSG);
+	console.log("pronbaod");
+ 	LvarMSG	= global._FirmaDigital_.tokens["TK"+LvarToken].MSG;
+ 	LvarMSG ='4406A45BB1F04528E0A193C883635F8BC5CFA571804810D71BE5B0A931914CC8CED861BD6DFB070AD053275F0B7DF9899719D92FC43702D4A1F4BCFAF2110C6F07588296E58C8DBEA043C20FD34D900AFB14146EE7767E83DFD92D30182BA5E0217064045BDB943F19AB52E3878875BEA2F77558B0DC1B444753EDC3442971A0';
+	let LvarCodebase ='http://localhost:3000/login.cfc';
+	LvarCodebase =new Buffer(LvarCodebase, "binary") ;
+	console.log(LvarCodebase.toString('hex'));
+	console.log("binarios");
+	const LvarData ='1573772777605%1F' + LvarMSG +'%1F'+LvarCodebase.toString('hex').toUpperCase();
+%>       
+
+
+<cfset LvarWS 	= LvarCodebase & "login.cfc">
+<cfset LvarData = "#LvarToken#%1F#LvarMSG#%1F#BinaryEncode(LvarWS.getBytes(),"HEX")#">
+<script>
+	window.setTimeout("sbCheck();",1001);
+	var GvarPort = null;
+	
+	function sbCheck()
+	{	
+		GvarPort	= localStorage.getItem("FirmaDigitalServer.Port");
+		if (GvarPort == null)
+		{
+			sbFirmaDigitalInit();
+			return;
+		}
+					
+		var LvarAjax 	= new XMLHttpRequest();
+
+		
+		try
+		{
+			LvarAjax.open("GET", "https://firmadigitallocal.com:"+GvarPort+"/FirmaDigitalServer?OP=check&data=<%=LvarToken%>%1F<%=LvarChecksum%>%1F1", true);
+			LvarAjax.onreadystatechange = sbCheck_Response;
+			LvarAjax.send();
+		}
+		catch (e)
+		{
+			sbFirmaDigitalInit();
+		}
+	
+	}
+	
+	function sbCheck_Response()
+	{
+		if (this.readyState != 4)
+			return;
+
+		if (this.status == 202)
+		{
+			if (this.responseText.substring(0,2) == "OK")
+			{		
+				sbLogin();		
+				if (this.responseText.substring(3).split(/\s+/)[0] ==	 "<%=LvarChecksumDES%>")
+				{
+					sbLogin();
+					return;
+				}
+			}
+		}
+		sbFirmaDigitalInit();
+	}
+	
+	function sbLogin()
+	{
+		var LvarAjax 	= new XMLHttpRequest();
+		
+		LvarAjax.open("GET", "https://firmadigitallocal.com:"+GvarPort+"/FirmaDigitalServer?OP=login&data=<%=LvarData%>", true);
+		LvarAjax.send();
+	}
+
+
+	function sbFirmaDigitalInit()
+	{
+		var LvarAjax = new XMLHttpRequest();
+		LvarAjax.open("GET", "login.cfc?Method=initServer&Token=<%=LvarToken%>", true);
+		LvarAjax.onreadystatechange = sbFirmaDigitalInit_Response;
+		LvarAjax.send();
+	}
+	
+	GvarInitErr = false;
+	function sbFirmaDigitalInit_Response()
+	{
+		if (this.readyState != 4)
+			return;
+
+		LvarResponse = this.responseText.split(",");
+		LvarTIP = LvarResponse[0];
+		LvarMSG = LvarResponse[1];
+		LvarOK	= (LvarMSG == "OK");
+
+		//parent.setStatus ("FirmaDigitalInit: " + LvarMSG);
+		if (LvarOK)
+		{
+			location.href = "init_installer.cfm?tkn1=<%=LvarToken%>&proceso=login";
+		}
+		else if( typeof LvarMSG === 'undefined' || LvarMSG === null )
+debugger;
+		else
+			parent.sbError(LvarMSG);
+	}
+
+</script>
