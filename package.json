@@ -17,6 +17,7 @@
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "fstream": "^1.0.12",
     "jwt-simple": "^0.5.6",
     "keygenerator": "^1.0.4",
     "node-gzip": "^1.1.2",
@@ -26,6 +27,9 @@
     "save": "^2.4.0",
     "sha1": "^1.1.1",
     "struct": "0.0.12",
+    "tar": "^5.0.5",
+    "unzipper": "^0.10.5",
+    "zip-local": "^0.3.4",
     "zlib": "^1.0.5"
   }
 }

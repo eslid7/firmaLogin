@@ -12,6 +12,9 @@ const zlib = require('zlib');
 const {gzip, ungzip} = require('node-gzip');
 var jwt = require('jwt-simple');
 var aesjs = require('aes-js');
+const tar = require('tar');
+const fstream = require('fstream');
+const unzipper = require('unzipper');
 
 const decompress = require('decompress');
 
@@ -232,14 +235,14 @@ function loginResponse(req, res){
 	}
 }
 
-// responde el installer
+// responde el installer OPCION 1 PERO TENDRIAMOS QUE QUEMARLE POR AMBIENTE EL ARCHIVO 
 async function fileInstaller(req, res){
 	let fileDataBinary = fs.readFileSync(path.resolve(__dirname,'../public/TMP_file.zip'));
 
 	let filePath =  path.resolve(__dirname,'../public/TMP_file.zip') // or any file format
 
-	  // Check if file specified by the filePath exists 
-	  fs.exists(filePath, function(exists){
+	  	// Check if file specified by the filePath exists 
+	  	fs.exists(filePath, function(exists){
 	      if (exists) {     
 	        // Content-type is very interesting part that guarantee that
 	        // Web browser will handle response in an appropriate manner.
@@ -253,33 +256,6 @@ async function fileInstaller(req, res){
 	        res.end("ERROR File does not exist");
 	      }
 	    });
-
-
-	// let texto ="url=http://localhost:3000/login.cfc";
-	// token +="token="+ new Date().getTime();
-	// token +="proceso=Login";
-	// //token +="checksum=";// tengo que analizar que hacer con este
-
-	// // se crea el txt que debo agregar al jar
-	// fs.writeFile('parametros.txt', texto, (err) => {
-	//   if (err) throw err;
-
-	//   	//descomprimo el jar 
-	//   	const buffer = Buffer.from(fileDataBinary, 'base64');
-	// 	zlib.unzip(buffer, (err, buffer) => {
-	// 	  if (!err) {
-	// 	  	gzip(fileDataBinary, 'Buffer')
-	// 		  .then((compressed) => {
-			  	
-	// 		})
-							    
-	// 	  } else {
-	// 	   res.send(200, "OK");	
-	// 	  }
-	// 	});
-
-
-	// });	
 }
 
 
@@ -314,8 +290,8 @@ function getFirmaDigitalServerlib(req, res){
         });
         fs.createReadStream(filePath).pipe(res);
       } else {
-        response.writeHead(400, {"Content-Type": "text/plain"});
-        response.end("ERROR File does not exist");
+        res.writeHead(400, {"Content-Type": "text/plain"});
+        res.end("ERROR File does not exist");
       }
     });
 }
@@ -336,8 +312,8 @@ function getFirmaDigitalServerJAR(req, res){
         });
         fs.createReadStream(filePath).pipe(res);
       } else {
-        response.writeHead(400, {"Content-Type": "text/plain"});
-        response.end("ERROR File does not exist");
+        res.writeHead(400, {"Content-Type": "text/plain"});
+        res.end("ERROR File does not exist");
       }
     });
 }
@@ -358,13 +334,49 @@ function getlibASEP11dylib(req, res){
         });
         fs.createReadStream(filePath).pipe(res);
       } else {
-        response.writeHead(400, {"Content-Type": "text/plain"});
-        response.end("ERROR File does not exist");
+        res.writeHead(400, {"Content-Type": "text/plain"});
+        res.end("ERROR File does not exist");
       }
     });
 }
 
+// responde el installer ESTE ES EL DEFINITIVO dado que nos reponde a nosotros
+async function fileInstallerReal(req, res){
+	let timestampToken = new Date().getTime();
 
+	//  para descomprimir el installer en caso de necesitar
+	// fs.createReadStream('/Users/esligonzalez/Documents/Proyectos/FirmaLogin/server/public/FirmaDigital/plugin/lib/FirmaDigitalInstaller.jar')
+	//  		.pipe(unzipper.Extract({ path: 'output/path' }));
+	
+	let texto ="url=http://localhost:3000/login\n"; // mi ruta local
+	texto +="token="+ timestampToken +"\n"; // token de tiempo 
+	texto +="proceso=Login\n"; //posible proceso
+	texto +="checksum=086FAD726F4C02915CC33E6FF220C429"+"\n";// tengo que analizar que hacer con este
+
+	let newFilePath = path.resolve(__dirname,'../public/').toString();
+	newFilePath +='/compressed_folder'+ timestampToken +'.jar';
+
+	// se crea el txt que debo agregar al jar
+	fs.writeFile(path.resolve(__dirname,'../public/ContenidoFirma/parametros.txt').toString(), texto, (err) => {
+	  if (err) throw err;
+
+		var zipper = require('zip-local');
+		zipper.sync.zip(path.resolve(__dirname,'../public/ContenidoFirma').toString()).compress().save(newFilePath);
+
+		fs.exists(newFilePath, function(exists){
+	      if (exists) {     
+	        res.writeHead(200, {
+	          "Content-Type": "application/java-archive",
+	          "Content-Disposition": "attachment; filename=FirmaDigitalInstaller.jar"
+	        });
+	        fs.createReadStream(newFilePath).pipe(res);
+	      } else {
+	        res.writeHead(400, {"Content-Type": "text/plain"});
+	        res.end("ERROR File does not exist");
+	      }
+	    })
+	});	
+}
 
 module.exports = {
 	singPDF,
@@ -375,5 +387,6 @@ module.exports = {
     fileInstaller,
     getFirmaDigitalServerlib,
     getFirmaDigitalServerJAR,
-    getlibASEP11dylib
+    getlibASEP11dylib,
+    fileInstallerReal
 }

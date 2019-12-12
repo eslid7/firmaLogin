@@ -1,0 +1,4 @@
+url=http://localhost:3000/login 
+token=1576126816045
+proceso=Login
+checksum=086FAD726F4C02915CC33E6FF220C429
