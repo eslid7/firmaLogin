@@ -29,15 +29,15 @@ const unzip = util.promisify(zlib.unzip)
 
 //////////////
 //  OPCION 1
-const smartcard = require('smartcard');
-const Devices = smartcard.Devices;
-const Iso7816Application = smartcard.Iso7816Application;
+// const smartcard = require('smartcard');
+// const Devices = smartcard.Devices;
+// const Iso7816Application = smartcard.Iso7816Application;
 
-const devices = new Devices();
+// const devices = new Devices();
 
 //////////////
 // OPCION 2
-const signer = require('pkcs15-smartcard-sign');
+// const signer = require('pkcs15-smartcard-sign');
 
 
 
