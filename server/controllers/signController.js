@@ -7,6 +7,8 @@ var pkcs11 = new pkcs11js.PKCS11();
  
 
 function loginWhitSign(req, res){
+     console.log('Iniciando proceso')
+     res.send(200, "Pin incorrecto");
     try {
         // Getting info about PKCS11 Module
         pkcs11.load("/usr/local/lib/libASEP11.dylib");
