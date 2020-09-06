@@ -5,6 +5,8 @@
 const express = require('express')
 const dataController = require('../controllers/dataController')
 const signController = require('../controllers/signController')
+const xadesController = require('../controllers/xadesController')
+const signLotePDFController = require('../controllers/signLotePDFController')
 
 const router = express.Router()
 router.route('/login').get(dataController.login);
@@ -43,5 +45,12 @@ router.route('/seeeCard').get(dataController.seeeCard);
 
 router.route('/loginWhitSign/:id').get(signController.loginWhitSign);
 
+router.route('/tryXades/:id').get(xadesController.tryXades);
+
+
+router.route('/singPDFLote').get(signLotePDFController.singPDFLote);
+
+router.route('/PDFResponse').get(signLotePDFController.PDFResponse);
+router.route('/PDFResponse').post(signLotePDFController.PDFResponse);
 
 module.exports = router
